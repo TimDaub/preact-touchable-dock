@@ -1,0 +1,44 @@
+{
+  "name": "preact-touchable-dock",
+  "version": "0.0.1",
+  "description": "A touch and drag and droppable dock for single page web applications.",
+  "source": "src/TouchableDock.js",
+  "main": "dist/TouchableDock.js",
+  "module": "dist/TouchableDock.module.js",
+  "unpkg": "dist/TouchableDock.umd.js",
+  "scripts": {
+    "build:iife": "microbundle build --name TouchableDock -f iife -o dist/TouchableDock.min.js",
+    "build": "microbundle build --name TouchableDock && npm run build:iife && npm run copy",
+    "dev": "concurrently 'npm run watch' 'npm run serve'",
+    "watch": "watch 'npm run build' ./src/ -d",
+    "copy": "cp -r ./src/css dist/",
+    "serve": "python3 -m http.server --directory dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TimDaub/preact-touchable-dock.git"
+  },
+  "keywords": [
+    "preact",
+    "dock",
+    "sidebar",
+    "touch",
+    "drag",
+    "and",
+    "drop"
+  ],
+  "author": "Tim Daubenschütz <tim@daubenschuetz.de> (https://timdaub.github.io)",
+  "bugs": {
+    "url": "https://github.com/TimDaub/preact-touchable-dock/issues"
+  },
+  "homepage": "https://github.com/TimDaub/preact-touchable-dock#readme",
+  "devDependencies": {
+    "concurrently": "5.2.0",
+    "microbundle": "0.12.3",
+    "watch": "1.0.2"
+  },
+  "dependencies": {
+    "htm": "3.0.4",
+    "preact": "10.4.6"
+  }
+}
