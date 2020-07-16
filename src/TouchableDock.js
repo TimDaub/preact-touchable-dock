@@ -9,6 +9,7 @@ class TouchableDock extends Component {
   // TODO:
   // - Add a close button to the left
   // - When clicked on any content, expand to full
+  // - Allow adding children
   constructor(props) {
     super(props);
 
@@ -98,6 +99,7 @@ class TouchableDock extends Component {
     this.calcHeight(pageY, this.screenHeight());
   }
   render() {
+    const { children } = this.props;
     let { style } = this.props;
     const { height, mouseDown, touch, stage } = this.state;
     let defaultHeight;
@@ -132,6 +134,7 @@ class TouchableDock extends Component {
           </div>`
             : null
         }
+        ${children}
       </div>
     `;
   }
