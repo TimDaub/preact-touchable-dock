@@ -1,4 +1,5 @@
 # preact-touchable-dock
+[![npm version](https://badge.fury.io/js/preact-touchable-dock.svg)](https://badge.fury.io/js/preact-touchable-dock)
 
 > A touch and drag and droppable dock for single page web applications.
 
