@@ -2,6 +2,11 @@
 
 > A touch and drag and droppable dock for single page web applications.
 
+|
+:-------------------------:|:-------------------------:
+![](./assets/demo-touch.gif)  |  ![](./assets/demo-touch-simulated.gif)
+
+
 ## Contributing
 
 ```bash
