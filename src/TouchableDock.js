@@ -6,19 +6,24 @@ const html = htm.bind(h);
 class TouchableDock extends Component {
   // TODO:
   // - When dragged slightly over hint stage, proceed to full stage
+	// - Give drag function a decay function
   // - Add a close button to the left
   // - When clicked on any content, expand to full
-  // - add mouseMove listeners too
-  // - Spin out in its own npm package
   constructor(props) {
     super(props);
     this.state = {
-      height: 0
+      height: 0,
+      mouseDown: false
     };
 
-    this.handleTouchMove = this.handleTouchMove.bind(this);
+    this.handleMovement = this.handleMovement.bind(this);
   }
-
+  componentDidMount() {
+    document.addEventListener("mouseup", () =>
+      this.setState({ mouseDown: false })
+    );
+    document.addEventListener("mousemove", this.handleMovement);
+  }
   screenHeight() {
     return (
       window.innerHeight ||
@@ -26,16 +31,28 @@ class TouchableDock extends Component {
       document.body.clientHeight
     );
   }
-
-  handleTouchMove(evt) {
-    evt.preventDefault();
-
-    const { pageY } = evt.touches[0];
-
-    const height = ((this.screenHeight() - pageY) / this.screenHeight()) * 100;
+  calcHeight(pageY, screenHeight) {
+    const height = ((screenHeight - pageY) / screenHeight) * 100;
     this.setState({
       height: height + "vh"
     });
+  }
+  handleMovement(evt) {
+    evt.preventDefault();
+
+    const { mouseDown } = this.state;
+
+    let pageY;
+    if (evt.touches && evt.touches.length > 0) {
+      pageY = evt.touches[0].pageY;
+    } else if (mouseDown) {
+      pageY = evt.pageY;
+    } else {
+      // NOTE: There can be cases where the mouse is moved, but without prior
+      // click on the component. In this case we don't want to move at all.
+      return;
+    }
+    this.calcHeight(pageY, this.screenHeight());
   }
   render() {
     const { style, stage } = this.props;
@@ -63,8 +80,8 @@ class TouchableDock extends Component {
             ? html`
           <div
             class="touchable-dock--handle"
-            onTouchMove=${this.handleTouchMove}>
-						hello
+            onTouchMove=${this.handleMovement}
+						onMouseDown=${() => this.setState({ mouseDown: true })}>
           </div>`
             : null
         }
