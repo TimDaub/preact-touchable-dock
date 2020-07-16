@@ -2,7 +2,7 @@
 
 > A touch and drag and droppable dock for single page web applications.
 
-|
+Mobile|Simulated Mobile
 :-------------------------:|:-------------------------:
 ![](./assets/demo-touch.gif)  |  ![](./assets/demo-touch-simulated.gif)
 
