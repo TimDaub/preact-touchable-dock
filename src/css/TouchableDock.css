@@ -10,6 +10,7 @@
 .touchable-dock--handle {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   height: 50px;
 }
