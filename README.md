@@ -97,6 +97,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.2.1
+
+- Add closing action button
+
 ### 0.2.0
 
 - Deprecate changing `stage` through props and allow only through new method 
