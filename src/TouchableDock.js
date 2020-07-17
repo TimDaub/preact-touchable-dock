@@ -1,15 +1,45 @@
 import { h, Component } from "preact";
 import htm from "htm";
+import jss from "jss";
+import preset from "jss-preset-default";
 
 const html = htm.bind(h);
+jss.setup({ ...preset(), ...{ createGenerateId: () => ({key}) => key }});
 
 const transitionSpeed = ".1s";
+
+const styles = {
+  touchableDock: `
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index:9999;
+  `,
+
+  touchableDockHandle: {
+    display: "flex",
+    justifyContent: "center",
+    cursor: "pointer",
+    height: "50px",
+    "&::before": `
+      content: "";
+      height: 10px;
+      width: 50px;
+      background-color: grey;
+      border-radius: 5px;
+      margin-top: 20px;
+    `
+  }
+};
+
+const { classes } = jss.createStyleSheet(styles).attach();
+console.log(classes);
 
 class TouchableDock extends Component {
   // TODO:
   // - Add a close button to the left
   // - When clicked on any content, expand to full
-  // - Allow adding children
   constructor(props) {
     super(props);
 
@@ -46,9 +76,7 @@ class TouchableDock extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      prevProps.stage !== this.props.stage
-    ) {
+    if (prevProps.stage !== this.props.stage) {
       this.setStage(this.props.stage);
     }
 
@@ -124,19 +152,17 @@ class TouchableDock extends Component {
     // border, this border would show up in hidden mode as the border extends
     // outside of an element's box. Hence, we set it it -10% to make sure it's
     // of display while still preserving the height transition.
-    style = stage === "hide"
-      ? {...style, ...{ bottom: "-10%" }}
-      : style;
+    style = stage === "hide" ? { ...style, ...{ bottom: "-10%" } } : style;
 
     return html`
       <div
-        class="touchable-dock"
+        class=${classes.touchableDock}
         style=${style}>
         ${
           stage === "hint" || stage === "full"
             ? html`
           <div
-            class="touchable-dock--handle"
+            class=${classes.touchableDockHandle}
 						onMouseDown=${() => this.setState({ mouseDown: true })}
 						onTouchStart=${() => this.setState({ touch: true })}>
           </div>`

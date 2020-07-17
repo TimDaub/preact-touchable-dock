@@ -8,10 +8,9 @@
   "unpkg": "dist/TouchableDock.umd.js",
   "scripts": {
     "build:iife": "microbundle build --name TouchableDock -f iife -o dist/TouchableDock.min.js",
-    "build": "microbundle build --name TouchableDock && npm run build:iife && npm run copy",
+    "build": "microbundle build --name TouchableDock && npm run build:iife",
     "dev": "concurrently 'npm run watch' 'npm run serve'",
     "watch": "watch 'npm run build' ./src/ -d",
-    "copy": "cp -r ./src/css dist/",
     "serve": "python3 -m http.server --directory dist"
   },
   "repository": {
@@ -39,6 +38,8 @@
   },
   "dependencies": {
     "htm": "3.0.4",
+    "jss": "10.3.0",
+    "jss-preset-default": "10.3.0",
     "preact": "10.4.6"
   }
 }

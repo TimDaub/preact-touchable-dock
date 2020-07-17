@@ -23,7 +23,6 @@ $ yarn add preact-touchable-dock
     <meta charset="utf-8"/>
     <title>Touchable Dock Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="./css/TouchableDock.css">
 		<script src="https://unpkg.com/preact@10.4.6/dist/preact.min.js"></script>
 		<script src="https://unpkg.com/htm@3.0.4/dist/htm.js"></script>
 		<script src="./TouchableDock.min.js"></script>
@@ -69,8 +68,9 @@ $ yarn add preact-touchable-dock
 
 ### Notes
 
-- Both `TouchableDock.js` and `TouchableDock.css` need to be included in the
-page.
+- `TouchableDock` inserts inline classes via [JSS](https://cssinjs.org). This
+allows users to customize its style by adjusting classes like  `.touchableDock`
+and `.touchableDockHandle`.
 
 ## Contributing
 
