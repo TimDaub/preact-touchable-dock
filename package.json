@@ -1,6 +1,6 @@
 {
   "name": "preact-touchable-dock",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A touch and drag and droppable dock for single page web applications.",
   "source": "src/TouchableDock.js",
   "main": "dist/TouchableDock.js",

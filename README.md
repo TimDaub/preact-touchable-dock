@@ -83,6 +83,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.1.0
+
+- Deliver CSS classes as JS-generated inline classes using JSS
+
 ### 0.0.1
 
 - Initial release
