@@ -34,7 +34,6 @@ const styles = {
 };
 
 const { classes } = jss.createStyleSheet(styles).attach();
-console.log(classes);
 
 class TouchableDock extends Component {
   // TODO:
@@ -67,8 +66,6 @@ class TouchableDock extends Component {
     document.addEventListener("touchmove", this.handleMovement, {
       passive: false
     });
-
-    this.setStage(this.props.stage);
   }
 
   setStage(stage) {
@@ -76,10 +73,6 @@ class TouchableDock extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.stage !== this.props.stage) {
-      this.setStage(this.props.stage);
-    }
-
     const { height, mouseDown, stage, touch } = this.state;
     const newHeight = parseFloat(height);
     if (!mouseDown && !touch) {
@@ -158,16 +151,11 @@ class TouchableDock extends Component {
       <div
         class=${classes.touchableDock}
         style=${style}>
-        ${
-          stage === "hint" || stage === "full"
-            ? html`
           <div
             class=${classes.touchableDockHandle}
-						onMouseDown=${() => this.setState({ mouseDown: true })}
-						onTouchStart=${() => this.setState({ touch: true })}>
-          </div>`
-            : null
-        }
+            onMouseDown=${() => this.setState({ mouseDown: true })}
+            onTouchStart=${() => this.setState({ touch: true })}>
+          </div>
         ${children}
       </div>
     `;

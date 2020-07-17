@@ -30,17 +30,24 @@ $ yarn add preact-touchable-dock
     <script src="https://unpkg.com/htm@3.0.4/dist/htm.js"></script>
     <script src="https://unpkg.com/jss/dist/jss.min.js"></script>
     <script src="https://unpkg.com/jss-preset-default/dist/jss-preset-default.min.js"></script>
-    <script src="https://unpkg.com/preact-touchable-dock@0.1.0/dist/TouchableDock.min.js"></script>
+    
+    <script src="./TouchableDock.min.js"></script>
     <script type="module">
-      const { h, Component, render } = preact;
+      const { h, Component, render, createRef } = preact;
       const htm = window.htm;
 
       const html = htm.bind(h);
 
       class ControllableDock extends Component {
-        state = {
-          stage: "hide"
+        constructor(props) {
+          super(props);
+
+          this.dock = createRef();  
+          this.state = {
+            stage: "hide"
+          }
         }
+
         render() {
           const { stage } = this.state;
           return html`
@@ -48,15 +55,15 @@ $ yarn add preact-touchable-dock
             <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
             </p>
-            <button onClick=${() => this.setState({stage: "hide"})}>hide</button>
-            <button onClick=${() => this.setState({stage: "hint"})}>hint</button>
-            <button onClick=${() => this.setState({stage: "full"})}>full</button>
+            <button onClick=${() => this.dock.current.setStage("hide")}>hide</button>
+            <button onClick=${() => this.dock.current.setStage("hint")}>hint</button>
+            <button onClick=${() => this.dock.current.setStage("full")}>full</button>
             <${TouchableDock}
+              ref=${this.dock}
               style=${{
-                borderTop: "1px solid black",
+                borderTop: "5px solid green",
                 backgroundColor: "white"
-              }}
-              stage=${stage}>
+              }}>
               <h2>This is a dock text</h2> 
             <//>
           `;
@@ -69,7 +76,6 @@ $ yarn add preact-touchable-dock
   <body>
   </body>
 </html>
-
 ```
 
 ### Notes
@@ -77,6 +83,8 @@ $ yarn add preact-touchable-dock
 - `TouchableDock` inserts inline classes via [JSS](https://cssinjs.org). This
 allows users to customize its style by adjusting classes like  `.touchableDock`
 and `.touchableDockHandle`.
+- Changing the dock's stage works by calling the `setStage` method through a
+ref. Possible values are `["hide", "hint", "full"]`.
 
 ## Contributing
 
