@@ -27,10 +27,21 @@ const styles = {
       height: 10px;
       width: 50px;
       background-color: grey;
-      border-radius: 5px;
       margin-top: 20px;
     `
-  }
+  },
+  closeAction: `
+    font-family: Arial, sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 5px 0 0 15px;
+    color: #424242;
+    line-height: 1;
+  `
 };
 
 const { classes } = jss.createStyleSheet(styles).attach();
@@ -155,6 +166,11 @@ class TouchableDock extends Component {
             class=${classes.touchableDockHandle}
             onMouseDown=${() => this.setState({ mouseDown: true })}
             onTouchStart=${() => this.setState({ touch: true })}>
+            <span
+              class=${classes.closeAction}
+              onClick=${() => this.setStage("hide")}>
+              ×
+            </span>
           </div>
         ${children}
       </div>

@@ -100,7 +100,7 @@ $ npm run dev
 ### 0.2.0
 
 - Deprecate changing `stage` through props and allow only through new method 
-called `setStage`_
+called `setStage`
 
 ### 0.1.0
 
