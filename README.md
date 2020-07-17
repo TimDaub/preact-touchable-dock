@@ -97,6 +97,11 @@ $ npm run dev
 
 ## Changelog
 
+### 0.2.0
+
+- Deprecate changing `stage` through props and allow only through new method 
+called `setStage`_
+
 ### 0.1.0
 
 - Deliver CSS classes as JS-generated inline classes using JSS
