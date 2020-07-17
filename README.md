@@ -1,4 +1,5 @@
 # preact-touchable-dock
+[![npm version](https://badge.fury.io/js/preact-touchable-dock.svg)](https://badge.fury.io/js/preact-touchable-dock)
 
 > A touch and drag and droppable dock for single page web applications.
 
@@ -28,21 +29,21 @@ $ yarn add preact-touchable-dock
 		<script src="./TouchableDock.min.js"></script>
 		<script type="module">
       const { h, Component, render } = preact;
-			const htm = window.htm;
+      const htm = window.htm;
 
       const html = htm.bind(h);
 
-			class ControllableDock extends Component {
+      class ControllableDock extends Component {
         state = {
           stage: "hide"
         }
         render() {
           const { stage } = this.state;
           return html`
-						<h1>Hello World</h1>
-						<p>
+            <h1>Hello World</h1>
+            <p>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-						</p>
+            </p>
             <button onClick=${() => this.setState({stage: "hide"})}>hide</button>
             <button onClick=${() => this.setState({stage: "hint"})}>hint</button>
             <button onClick=${() => this.setState({stage: "full"})}>full</button>
@@ -59,11 +60,12 @@ $ yarn add preact-touchable-dock
       }
 
       render(html`<${ControllableDock} />`, document.body);
-	</script>
+  </script>
   </head>
   <body>
   </body>
 </html>
+
 ```
 
 ### Notes
