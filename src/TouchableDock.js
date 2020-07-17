@@ -120,6 +120,14 @@ class TouchableDock extends Component {
       ? { ...style, ...{ transition: `height ${transitionSpeed}  ease-in` } }
       : style;
 
+    // NOTE: If we set the dock to bottom: 0 permanently and the user added a
+    // border, this border would show up in hidden mode as the border extends
+    // outside of an element's box. Hence, we set it it -10% to make sure it's
+    // of display while still preserving the height transition.
+    style = stage === "hide"
+      ? {...style, ...{ bottom: "-10%" }}
+      : style;
+
     return html`
       <div
         class="touchable-dock"
