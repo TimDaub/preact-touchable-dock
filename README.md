@@ -24,10 +24,10 @@ $ yarn add preact-touchable-dock
     <meta charset="utf-8"/>
     <title>Touchable Dock Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://unpkg.com/preact@10.4.6/dist/preact.min.js"></script>
-		<script src="https://unpkg.com/htm@3.0.4/dist/htm.js"></script>
-		<script src="./TouchableDock.min.js"></script>
-		<script type="module">
+    <script src="https://unpkg.com/preact@10.4.6/dist/preact.min.js"></script>
+    <script src="https://unpkg.com/htm@3.0.4/dist/htm.js"></script>
+    <script src="./TouchableDock.min.js"></script>
+    <script type="module">
       const { h, Component, render } = preact;
       const htm = window.htm;
 
