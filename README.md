@@ -99,6 +99,11 @@ $ npm run dev
 
 ## Changelog
 
+### 0.3.0
+
+- Unmount children when component is in `stage === "hide"` to allow usage of
+`componentWillUnmount` in child
+
 ### 0.2.2
 
 - Add `onClose` prop to component for listening to close events.
