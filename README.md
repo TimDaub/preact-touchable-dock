@@ -17,7 +17,7 @@ $ yarn add preact-touchable-dock
 
 ## Usage
 
-- [Demo](https://jsfiddle.net/5kL4f26w/1/)
+- [Demo](https://jsfiddle.net/bkcu1qfj/1/)
 
 ```html
 <!doctype html>
