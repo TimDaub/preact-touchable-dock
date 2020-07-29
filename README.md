@@ -60,6 +60,7 @@ $ yarn add preact-touchable-dock
             <button onClick=${() => this.dock.current.setStage("full")}>full</button>
             <${TouchableDock}
               ref=${this.dock}
+              onClose=${() => console.log("Dock was closed")}
               style=${{
                 borderTop: "5px solid green",
                 backgroundColor: "white"
@@ -85,6 +86,7 @@ allows users to customize its style by adjusting classes like  `.touchableDock`
 and `.touchableDockHandle`.
 - Changing the dock's stage works by calling the `setStage` method through a
 ref. Possible values are `["hide", "hint", "full"]`.
+- `props.onClose` allows to listen for close events emitted from the dock.
 
 ## Contributing
 

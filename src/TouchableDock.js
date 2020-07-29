@@ -80,6 +80,10 @@ class TouchableDock extends Component {
   }
 
   setStage(stage) {
+    const { onClose } = this.props;
+    if (stage === "hide" && onClose && typeof onClose === "function") {
+      onClose();
+    }
     this.setState({ height: 0, stage });
   }
 
@@ -132,7 +136,7 @@ class TouchableDock extends Component {
   }
   render() {
     const { children } = this.props;
-    let { style } = this.props;
+    let { style, onClose } = this.props;
     const { height, mouseDown, touch, stage } = this.state;
     let defaultHeight;
 
