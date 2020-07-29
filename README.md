@@ -99,6 +99,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.2.2
+
+- Add `onClose` prop to component for listening to close events.
+
 ### 0.2.1
 
 - Add closing action button
