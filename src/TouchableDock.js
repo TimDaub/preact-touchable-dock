@@ -176,7 +176,9 @@ class TouchableDock extends Component {
               ×
             </span>
           </div>
-        ${children}
+        <!-- we only mount the dock's children, when its mounted. That way,
+        children can use react's componentWillUnmount method -->
+        ${stage !== "hide" ? children : null}
       </div>
     `;
   }
