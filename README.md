@@ -99,6 +99,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.3.3
+
+- Forgot to update the build lol
+
 ### 0.3.2
 
 - Bug fix: `Uncaught ReferenceError: pageY is not defined`
