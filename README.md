@@ -99,6 +99,12 @@ $ npm run dev
 
 ## Changelog
 
+### 0.3.1
+
+- Bug fix: Allow other components to receive touch and mouse movement event by
+conditionally applying `evt.preventDefault`
+- Bug fix: Allow adjusting dock's height in scrolled position
+
 ### 0.3.0
 
 - Unmount children when component is in `stage === "hide"` to allow usage of
