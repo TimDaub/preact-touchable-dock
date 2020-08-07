@@ -61,6 +61,7 @@ $ yarn add preact-touchable-dock
             <${TouchableDock}
               ref=${this.dock}
               onClose=${() => console.log("Dock was closed")}
+              onClick=${() => console.log("Dock was clicked")}
               style=${{
                 borderTop: "5px solid green",
                 backgroundColor: "white"
@@ -98,6 +99,10 @@ $ npm run dev
 ```
 
 ## Changelog
+
+### 0.3.4
+
+- Added `onClick` prop
 
 ### 0.3.3
 

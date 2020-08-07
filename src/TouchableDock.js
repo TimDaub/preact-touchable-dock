@@ -137,7 +137,7 @@ class TouchableDock extends Component {
   }
   render() {
     const { children } = this.props;
-    let { style, onClose } = this.props;
+    let { style, onClose, onClick } = this.props;
     const { height, mouseDown, touch, stage } = this.state;
     let defaultHeight;
 
@@ -165,6 +165,7 @@ class TouchableDock extends Component {
 
     return html`
       <div
+        onClick=${onClick}
         class=${classes.touchableDock}
         style=${style}>
           <div
@@ -173,7 +174,12 @@ class TouchableDock extends Component {
             onTouchStart=${() => this.setState({ touch: true })}>
             <span
               class=${classes.closeAction}
-              onClick=${() => this.setStage("hide")}>
+              onClick=${evt => {
+                // NOTE: We call `stopPropagation` here to avoid firing an
+                // additional `onClick` event.
+                evt.stopPropagation();
+                this.setStage("hide");
+              }}>
               ×
             </span>
           </div>
