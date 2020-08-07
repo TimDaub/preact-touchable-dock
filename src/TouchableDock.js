@@ -4,7 +4,7 @@ import jss from "jss";
 import preset from "jss-preset-default";
 
 const html = htm.bind(h);
-jss.setup({ ...preset(), ...{ createGenerateId: () => ({key}) => key }});
+jss.setup({ ...preset(), ...{ createGenerateId: () => ({ key }) => key } });
 
 const transitionSpeed = ".1s";
 
@@ -105,14 +105,13 @@ class TouchableDock extends Component {
     }
   }
   screenHeight() {
-    return (
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight
+    return Math.max(
+      document.documentElement.clientHeight || 0,
+      window.innerHeight || 0
     );
   }
-  calcHeight(pageY, screenHeight) {
-    const height = ((screenHeight - pageY) / screenHeight) * 100;
+  calcHeight(y, screenHeight) {
+    const height = ((screenHeight - y) / screenHeight) * 100;
     this.setState({
       height: height + "%"
     });
@@ -120,12 +119,15 @@ class TouchableDock extends Component {
   handleMovement(evt) {
     const { touch, mouseDown } = this.state;
 
-    let pageY;
+    // NOTE: We depend on `clientY` here, as it gives us the user's cursor
+    //  position relative to the viewport. It allows the user to adjust the 
+    //  dock's position even when having scrolled on the page.
+    let y;
     if (touch && evt.touches && evt.touches.length > 0) {
       evt.preventDefault();
-      pageY = evt.touches[0].pageY;
+      y = evt.touches[0].clientY;
     } else if (mouseDown) {
-      pageY = evt.pageY;
+      y = evt.clientY;
     } else {
       // NOTE: There can be cases where the mouse is moved, but without prior
       // click on the component. In this case we don't want to move at all.
