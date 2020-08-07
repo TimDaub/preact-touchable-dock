@@ -118,12 +118,11 @@ class TouchableDock extends Component {
     });
   }
   handleMovement(evt) {
-    evt.preventDefault();
-
     const { touch, mouseDown } = this.state;
 
     let pageY;
     if (touch && evt.touches && evt.touches.length > 0) {
+      evt.preventDefault();
       pageY = evt.touches[0].pageY;
     } else if (mouseDown) {
       pageY = evt.pageY;
