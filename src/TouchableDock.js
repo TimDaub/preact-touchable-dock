@@ -133,7 +133,7 @@ class TouchableDock extends Component {
       // click on the component. In this case we don't want to move at all.
       return;
     }
-    this.calcHeight(pageY, this.screenHeight());
+    this.calcHeight(y, this.screenHeight());
   }
   render() {
     const { children } = this.props;

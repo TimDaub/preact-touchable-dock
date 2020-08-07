@@ -99,6 +99,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.3.2
+
+- Bug fix: `Uncaught ReferenceError: pageY is not defined`
+
 ### 0.3.1
 
 - Bug fix: Allow other components to receive touch and mouse movement event by
