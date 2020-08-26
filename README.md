@@ -100,6 +100,10 @@ $ npm run dev
 
 ## Changelog
 
+### 0.3.5
+
+- Bug fix: Don't allow scrolling of body in `stage === full`
+
 ### 0.3.4
 
 - Added `onClick` prop
