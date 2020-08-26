@@ -84,6 +84,18 @@ class TouchableDock extends Component {
     if (stage === "hide" && onClose && typeof onClose === "function") {
       onClose();
     }
+    // NOTE: Idea from https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+    // with slight modifications/corrections
+    if (stage === "full") {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
     this.setState({ height: 0, stage });
   }
 
